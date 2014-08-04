@@ -1,10 +1,17 @@
-require 'spec_helper'
-
-describe "StaticPages" do
-  describe "Home Pages" do
-    it "should have the content 'Sample App'" do
-      visit '/static_pages/home'
-      expect(page).to have_content('Sample App')
-    end
-  end
-end
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= full_title(yield(:title))%></title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <%= render 'layouts/shim'%>
+</head>
+<body>
+  <%=render 'layouts/header'%>
+  <div class="container">
+    <%= yield %>
+    <%= render 'layouts/footer' %>
+  </div>
+</body>
+</html>
