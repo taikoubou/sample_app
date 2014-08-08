@@ -22,7 +22,7 @@ describe Relationship do
   end
 
   describe "when follower id is no present" do
-    before { relationship.followe_id = nil }
+    before { relationship.follower_id = nil }
     it { should_not be_valid }
   end
 end
