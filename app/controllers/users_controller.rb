@@ -54,7 +54,7 @@ class UsersController < ApplicationController
   end
 
   def followers
-    @title = "Following"
+    @title = "Followers"
     @user = User.find(params[:id])
     @users = @user.followers.paginate(page: params[:page])
     render 'show_follow'
@@ -62,14 +62,7 @@ class UsersController < ApplicationController
 
   private
     def user_params
-      params.require(:user).permit(:name,:email,:password,:password_confirmation)
-    end
-
-    def signed_in_user
-      unless signed_in?
-        store_location
-        redirect_to signin_url, notice: "Please sign in."
-      end
+      params.require(:user).permit(:name, :email, :password, :password_confirmation)
     end
 
     def correct_user
