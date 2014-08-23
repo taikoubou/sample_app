@@ -11,10 +11,12 @@ Then /^he should see an error message$/ do
 end
 
 Given /^the user has an account$/ do
-  @user = User.create(name: "Example User",email: "user@example.com",password: "foobar",password_confirmation: "foobar")
+  @user = User.create(name: "Example User", email: "user@example.com", 
+                      password: "foobar", password_confirmation: "foobar")
 end
 
 When /^the user submits valid signin information$/ do
+  visit signin_path
   fill_in "Email", with: @user.email
   fill_in "Password", with: @user.password
   click_button "Sign in"
@@ -25,5 +27,5 @@ Then /^he should see his profile page$/ do
 end
 
 Then /^he should see a signout link$/ do
-  expect(page).to have_link('Sign out',href: signout_path)
+  expect(page).to have_link('Sign out', href: signout_path)
 end
