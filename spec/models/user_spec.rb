@@ -47,7 +47,7 @@ describe User do
       @user.destroy
       expect(microposts).not_to be_empty
       microposts.each do |micropost|
-        expect(Microposts.where(id: micropost.id)).to be_empty
+        expect(Micropost.where(id: micropost.id)).to be_empty
       end
     end
     describe "status" do
